@@ -12,15 +12,23 @@ class JavaFileSystem implements FileSystem {
     public static final int SEEK_SET    = 0;
     public static final int SEEK_CUR    = 1;
     public static final int SEEK_END    = 2;
+    
+    Disk disk;
+    FileTable fileTable;
 
     JavaFileSystem() {
         //throw new RuntimeException("not implemented");
+    	
     }
 
     // Initialize the the disk to a state representing an empty file-system.
     // Fill in the super block, mark all inodes as "unused", and link
     // all data blocks into the free list.
     public int formatDisk(int size, int iSize) {
+    	
+    	disk = new Disk();
+    	
+    	
         throw new RuntimeException("not implemented");
     } // formatDisk
 
