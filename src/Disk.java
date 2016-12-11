@@ -58,16 +58,22 @@ class Disk {
 	public void read(int blocknum, SuperBlock block) {
 		try {
 			seek(blocknum);
+			/*
 			block.size = disk.readInt();
 			block.iSize = disk.readInt();
 			block.freeList = disk.readInt();
+			*/
+			block.setSize(disk.readInt());
+			block.setISize(disk.readInt());
+			block.setFreeList(disk.readInt());
 		}
 		catch (EOFException e) {
 			if (blocknum != 0) {
 				System.err.println(e);
 				System.exit(1);
 			}
-			block.size = block.iSize = block.freeList = 0;
+			//block.size = block.iSize = block.freeList = 0;
+			block.zerarSuperBlock();
 		}
 		catch (IOException e) {
 			System.err.println(e);
@@ -129,9 +135,9 @@ class Disk {
 	public void write(int blocknum, SuperBlock block) {
 		try {
 			seek(blocknum);
-			disk.writeInt(block.size);
-			disk.writeInt(block.iSize);
-			disk.writeInt(block.freeList);
+			disk.writeInt(block.getSize());
+			disk.writeInt(block.getISize());
+			disk.writeInt(block.getFreeList());
 		}
 		catch (IOException e) {
 			System.err.println(e);

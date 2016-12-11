@@ -10,6 +10,11 @@ class InodeBlock {
 		for (int i = 0; i < Disk.BLOCK_SIZE/Inode.SIZE; i++)
 			node[i] = new Inode();
 	}
+	
+	public void inicializarInodes(){
+		for (int i = 0; i < Disk.BLOCK_SIZE/Inode.SIZE; i++)
+			node[i].flags = 0;
+	}
 
 	public String toString() {
 		String s = "INODEBLOCK:\n";

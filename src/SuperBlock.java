@@ -23,6 +23,12 @@ class SuperBlock {
 		this.freeList = freeList;	
 	}
 	
+	public void zerarSuperBlock() {
+		this.size = 0;
+		this.iSize = 0;
+		this.freeList = 0;	
+	}
+	
 	public void setSize(int size){
 		this.size = size;
 	}

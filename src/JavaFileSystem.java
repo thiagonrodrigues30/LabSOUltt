@@ -15,6 +15,8 @@ class JavaFileSystem implements FileSystem {
     
     Disk disk;
     FileTable fileTable;
+    SuperBlock superBlock;
+    InodeBlock inodeBlock;
 
     JavaFileSystem() {
         //throw new RuntimeException("not implemented");
@@ -27,9 +29,12 @@ class JavaFileSystem implements FileSystem {
     public int formatDisk(int size, int iSize) {
     	
     	disk = new Disk();
+    	superBlock = new SuperBlock(size, iSize, 0);
+    	inodeBlock = new InodeBlock();
+    	inodeBlock.inicializarInodes();
     	
-    	
-        throw new RuntimeException("not implemented");
+    	return 1;
+        //throw new RuntimeException("not implemented");
     } // formatDisk
 
     // Close all files and shut down the simulated disk.
