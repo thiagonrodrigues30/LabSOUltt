@@ -43,13 +43,13 @@ class JavaFileSystem implements FileSystem {
     } // shutdown
 
     // Create a new (empty) file and return a file descriptor.
-    public int create() {
-        throw new RuntimeException("not implemented");
+    public int create() {   
+    	throw new RuntimeException("not implemented");
     } // create
 
     // Return the inumber of an open file
     public int inumber(int fd) {
-        throw new RuntimeException("not implemented");
+        return fileTable.getInumber(fd);
     }
 
     // Open an existing file identified by its inumber
